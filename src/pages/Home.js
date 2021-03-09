@@ -27,6 +27,32 @@ const Home = () => {
           />
         ))}
       </Games>
+
+      <h2>Popular Games</h2>
+      <Games>
+        {popular.map((u) => (
+          <Game
+            name={u.name}
+            released={u.released}
+            id={u.id}
+            image={u.background_image}
+            key={u.id}
+          />
+        ))}
+      </Games>
+
+      <h2>New Games</h2>
+      <Games>
+        {newGames.map((u) => (
+          <Game
+            name={u.name}
+            released={u.released}
+            id={u.id}
+            image={u.background_image}
+            key={u.id}
+          />
+        ))}
+      </Games>
     </GameList>
   );
 };
@@ -40,7 +66,7 @@ const GameList = styled(motion.div)`
 const Games = styled(motion.div)`
   min-height: 80vh;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   grid-column-gap: 3rem;
   grid-row-gap: 5rem;
 `;

@@ -173,7 +173,11 @@ const gamesReducer = (state = initialState, action) => {
 }
 ```
 
+3. It is important to note that in this file we creating an action creator so what is dispatch, we didn’t import it in this file? That’s right you will need to go to the component that you wish to use this action creator on and import the following:
+- `import {useDispatch, useSelector} from 'react-redux'`
+- `import {loadGames} from '../actions/gamesAction'`
 
+4. From there you need to declare the dispatch `const dispatch = useDispatch()` and inside of an onload useEffect you can do this `dispatch(loadGames())`
 
 
 

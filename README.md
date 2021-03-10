@@ -86,4 +86,29 @@ You will go back to the root index.js
 5. `<Provider store={store}>` You will need to pass the store that we declared to the opening Provider tag. 
 6. The createStore will only take two arguments, the first one that we set up so far is the combined reducers which will have all of the reducers that we wish to use, the second argument will be some sort of code that will connect this to the chrome google extension to better visualize our states. 
 
+## Short explanation of the redux process
+#### Action
+What is it? It is an object that will describe what will happen. It will have a type property. `{type: "FETCH_GAMES"}`
+
+You may see something called an action creator and what that is, is a function that returns an action.
+`const fetchGames = () => {type: "FETCH_GAMES,"}` You will invoke this function and it literally returns the action object. When using the action creators, you can actually attach additional data to the reducer. So besides the type property you will also have a payload property. 
+```
+const fetchUser = (userData) => {
+	return {
+		type: "FETCH_USER",
+		payload: userData	
+	}
+}
+```
+It is important to note that if you do this, you will need to ensure that your reducer will access that data by simply adding the action.payload into the reducer. 
+
+#### Dispatch
+Dispatch is basically you sending the action to the reducer. `dispatch({type: "FETCH_GAMES"})` what it accepts is essentially an action. 
+
+#### Reducer
+The dispatch sends the action.type and it will check the type and it will do something based on the type.
+
+#### Thunk
+This will allow us to dispatch asynchronous actions. 
+
 

@@ -15,6 +15,8 @@ After creating your react app, you will need to install the following packages:
 - [API](https://api.rawg.io/docs/)
 
 ## All about redux
+The following guide is primarily used for the initial setup of redux and the necessary technologies to make it function properly within your app. After you have set this up you will basically have a skeleton that will help improve your workflow!
+
 Go to the root index.js file
 1. `import {createStore} from 'redux'`
 2. `const store = createStore()` this createStore() will take a reducer (ie. you may have multiple reducers and will need to combine them into one)
@@ -125,7 +127,51 @@ Go to the root index.js
 
 It is important to note that later you will be able to add other middleware such as logger 
 
+## Action 
+In the previous section I did talk about what is the purpose of the action and here I will elaborate on it.
 
+Go ahead and create an actions dir inside of the src dir. And go ahead and create a file for it. 
+
+Inside this file you will do the fetching. So you will need to import axios as well as anything code that is related to this fetching (this project has an api file that has the URLS to grab data from the API)
+1. Create an action creator that will dispatch the action object.
+```
+export const loadGames = () => async (dispatch) => {
+	// code to do your fetch
+	 const popularData = await axios.get(popularGamesURL());
+}
+```
+
+It is important to note that you need two arrows since we are using thunk and the syntax will be like so.
+
+2. 
+```
+export const loadGames = () => async (dispatch) => {
+	// code to do your fetch
+	 const popularData = await axios.get(popularGamesURL());
+	const upcomingData = await axios.get(upcomingGamesURL());
+
+	dispatch({
+		type: "FETCH_GAMES",
+		payload: {
+			popular: popularData,
+			upcoming: upcomingData,
+		}
+	})
+}
+```
+
+Here we are dispatching the action object with the keys type and payload. It is important to note that we want our payload to hold two types of data, upcoming and popular games. You should be able to do that by having the payload key equal to an object with the keys popular and upcoming and set those equal to its corresponding data.
+
+Now if you do that, you will need to go to your reducer and inside of that return statement for this particular case, you will need to do: 
+(Inside of our corresponding reducer)
+```
+const gamesReducer = (state = initialState, action) => {
+	switch(action.type) {
+		case "FETCH_GAMES":
+			return {...state, popular: action.payload.popular}
+	}
+}
+```
 
 
 

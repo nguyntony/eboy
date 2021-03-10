@@ -108,7 +108,35 @@ Dispatch is basically you sending the action to the reducer. `dispatch({type: "F
 #### Reducer
 The dispatch sends the action.type and it will check the type and it will do something based on the type.
 
-#### Thunk
-This will allow us to dispatch asynchronous actions. 
+## Thunk
+This will allow us to dispatch asynchronous actions. In the process that was explained above, there is no real way for us to do asynchronous actions. This means that in your action creator you will not be able to perform an axios call to an api. 
+
+#### Setup
+Go to the root index.js
+1. `import thunk from 'redux-thunk'` 
+2. `import {applyMiddleware, compose} from 'redux'` you will need to include this in the import statement that we should already have when importing createStore. 
+
+- applyMiddleware, every action that is being dispatch it will allow us to add something between that process. In this case, we want thunk to be ran.
+
+- compose will combine the chrome or window dev tool and the thunk because createStore only ACCEPTS 2 ARGUMENTS
+
+3. `const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose` declare a compose enhancer which will be the redux dev tool. 
+4. `const store = createStore(rootReducer, composeEnhancer(applyMiddleware(thunk)))` You will need to update the store that we declared earlier to this.
+
+It is important to note that later you will be able to add other middleware such as logger 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

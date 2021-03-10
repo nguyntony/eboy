@@ -27,9 +27,9 @@ After you have created your reducers dir, you will want to create a file for eac
 2. 
 ```
 const initialState = {
-	popular = [],
-	upcoming = [],
-	newGames = []
+	popular: [],
+	upcoming: [],
+	newGames: []
 }
 ```
 This initialState will be an object with keys of anticipated data that we will have, we are expecting the value each key to be an array of objects. Initially, all of this will be empty and we are basically setting up a blueprint or empty shelf to store data in this state. 
@@ -49,6 +49,13 @@ const gamesReducer = (state = initialState, action) => {
 }
 ```
 5. `export default gamesReducer` make sure you export your reducer!
+
+6. You will follow the same format as above when you would like to create another reducer, be sure to connect it with the master reducer. 
+
+#### TLDR
+You will create a reducers dir that will have all of your reducers, one reducer (one file) may contain a reducer that will have more than one state (gamesReducer will have a state that is an object with popular, new and upcoming games).
+
+You will create a reducer function that will accept two parameters, the state and action. Inside of the function there will be a switch case that will perform a specific action depending on the action.type 
 
 #### Reducer directory setup
 You have created the reducers dir which should have one file right now (the one we created above). Next, you may want to set up a directory for the reducers (this will be very similar to what we did in node/express). This is good for organization
@@ -77,6 +84,6 @@ You will go back to the root index.js
 </Provider>
 ```
 5. `<Provider store={store}>` You will need to pass the store that we declared to the opening Provider tag. 
-
+6. The createStore will only take two arguments, the first one that we set up so far is the combined reducers which will have all of the reducers that we wish to use, the second argument will be some sort of code that will connect this to the chrome google extension to better visualize our states. 
 
 

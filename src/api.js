@@ -38,3 +38,8 @@ export const newGamesURL = () => `${base_url}${new_games}`;
 
 // game details
 export const gameDetailsURL = (game_id) => `${base_url}games/${game_id}`;
+
+// game screenshots
+export const gameScreenshotURL = (game_id) => {
+  return `${base_url}games/${game_id}/screenshots`;
+};

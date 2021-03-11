@@ -63,6 +63,7 @@ const GameList = styled(motion.div)`
     padding: 5rem 0rem;
   }
 `;
+
 const Games = styled(motion.div)`
   min-height: 80vh;
   display: grid;

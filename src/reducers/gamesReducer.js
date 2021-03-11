@@ -11,6 +11,7 @@ const gamesReducer = (state = initialState, action) => {
   switch (action.type) {
     case "FETCH_GAMES":
       return {
+        // this is receiving a dispatched action object with these keys.
         ...state,
         popular: action.payload.popular,
         upcoming: action.payload.upcoming,

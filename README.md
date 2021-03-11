@@ -35,6 +35,7 @@ const initialState = {
 }
 ```
 This initialState will be an object with keys of anticipated data that we will have, we are expecting the value each key to be an array of objects. Initially, all of this will be empty and we are basically setting up a blueprint or empty shelf to store data in this state. 
+
 3. You will now set the state parameter equal to this initialState
 ```
 const gamesReducer = (state = initialState, action) => {}
